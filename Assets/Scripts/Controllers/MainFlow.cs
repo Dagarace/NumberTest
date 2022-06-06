@@ -15,14 +15,8 @@ public class MainFlow : MonoBehaviour {
 
 	void Awake() {
 
-		InitNumbersList();
+		InitMainFlow();
 
-		mainUIController = GetComponent<MainUIController>();
-		gameplayController = GetComponent<GameplayController>();
-		mainUIController.CreateMainUI();
-		mainUIController.InitMainUI();
-
-		gameState = GameStates.MainMenu;
 		mainUIController.OnGameFlowStarted += OnGameFlowStarted;
 		mainUIController.OnGameFlowReStarted += OnGameFlowReStarted;
 		mainUIController.OnGameFlowPaused += OnGameFlowPaused;
@@ -59,6 +53,18 @@ public class MainFlow : MonoBehaviour {
 
 		gameplayController.SelectRandomOptionsFromList(numbers);
 		RunGameFlow();
+	}
+
+	private void InitMainFlow() {
+
+		InitNumbersList();
+
+		mainUIController = GetComponent<MainUIController>();
+		gameplayController = GetComponent<GameplayController>();
+		mainUIController.CreateMainUI();
+		mainUIController.InitMainUI();
+
+		gameState = GameStates.MainMenu;
 	}
 
 	private void InitNumbersList() {
